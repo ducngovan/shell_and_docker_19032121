@@ -1,0 +1,22 @@
+FROM ubuntu:latest
+COPY . /home/spring_app
+
+LABEL maintainer="DucNV"
+LABEL build_date="03/22/2021"
+LABEL version="1.0"
+
+VOLUME /home/spring_app/Customers/db
+
+#install jdk 8
+RUN apt-get update
+RUN	apt-get install -y openjdk-8-jdk
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+
+
+#run file jar
+WORKDIR /home/spring_app
+ENTRYPOINT ["java", "-jar"]
+CMD ["mycontact.jar"]
+
+EXPOSE 8080

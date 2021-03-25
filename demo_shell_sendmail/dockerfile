@@ -1,0 +1,32 @@
+FROM ubuntu:latest
+
+# Copy necessary information
+COPY . /shell
+
+#install jdk 8
+RUN apt-get update
+RUN	apt-get install -y openjdk-8-jdk
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+
+# Install nano
+RUN apt-get update
+RUN apt install nano
+
+# Install cron
+RUN apt-get update
+RUN apt-get install -y cron
+RUN apt-get install -y systemd
+#service cron start
+
+# Install ssmtp
+RUN apt-get update
+RUN apt install -y ssmtp
+RUN apt  install -y mutt
+
+#Default work
+WORKDIR /shell
+
+# Create folder demo send mail with file .sh
+RUN mkdir send_mail_shell
+

@@ -1,0 +1,36 @@
+version: "3"
+
+# network
+#networks:
+#  demo-bridge:
+#    driver: bridge
+    
+# services
+services:
+  # mysql
+  my-mysql:
+    container_name: localhost
+    build:
+      dockerfile: dockerfile_mysql
+      context: D:/docker_composev1/
+    hostname: my_sql
+    restart: always
+#    networks:
+ #     - demo-bridge
+#    volumes:
+#      - /D/docker_composev1/db:/home/db
+  # my-java
+  my-java:
+    container_name: my_java
+    build:
+      dockerfile: dockerfile_environment_java
+      context: D:/docker_composev1/
+    hostname: my-java
+    restart: always
+#    networks:
+#      - demo-bridge
+    ports:
+      - "8080:8080"
+    links:
+      - my-mysql  
+           
