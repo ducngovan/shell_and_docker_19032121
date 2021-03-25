@@ -12,7 +12,7 @@ services:
     container_name: localhost
     build:
       dockerfile: dockerfile_mysql
-      context: D:/docker_composev1/
+      context: D:/shell_and_docker_19032121/demo_docker_compose/
     hostname: my_sql
     restart: always
 #    networks:
@@ -24,7 +24,7 @@ services:
     container_name: my_java
     build:
       dockerfile: dockerfile_environment_java
-      context: D:/docker_composev1/
+      context: D:/shell_and_docker_19032121/demo_docker_compose/
     hostname: my-java
     restart: always
 #    networks:
